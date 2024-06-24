@@ -1,8 +1,12 @@
 package customers;
 
 public class CustomerDAO implements ICustomerDAO{
-	private ILogger logger = new Logger();
-	
+	private ILogger logger;
+
+	public void setLogger(ILogger logger) {
+		this.logger = logger;
+	}
+
 	public void save(Customer customer) {
 		// simple sleep
 		try {

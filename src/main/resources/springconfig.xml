@@ -7,6 +7,16 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
      
-	<bean id="customerService" class="customers.CustomerService"/>
+	<bean id="customerService" class="customers.CustomerService">
+		<property name="emailSender" ref="emailSender" />
+		<property name="customerDAO" ref="customerDAO" />
+	</bean>
+	<bean id="emailSender" class="customers.EmailSender">
+		<property name="logger" ref="logger" />
+	</bean>
+	<bean id="customerDAO" class="customers.CustomerDAO">
+		<property name="logger" ref="logger" />
+	</bean>
+	<bean id="logger" class="customers.Logger" />
 
 </beans>
