@@ -9,7 +9,7 @@ public class CustomerDAO implements ICustomerDAO{
 	private ILogger logger;
 
 	@Autowired
-	public CustomerDAO(Logger logger) {
+	public CustomerDAO(ILogger logger) {
 		this.logger = logger;
 	}
 
