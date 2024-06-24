@@ -10,8 +10,11 @@ public class Application {
 		ICustomerService customerService = context.getBean("customerService",
 				ICustomerService.class);
 
+		IProductService productService = context.getBean("productService", IProductService.class);
+
 		customerService.addCustomer("Frank Brown", "fbrown@acme.com",
 				"mainstreet 5", "Chicago", "60613");
+		productService.addProduct("Refrigerator", 1600.0);
 	}
 }
 
