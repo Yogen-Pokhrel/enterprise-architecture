@@ -3,7 +3,7 @@ package customers;
 public class CustomerDAO implements ICustomerDAO{
 	private ILogger logger;
 
-	public void setLogger(ILogger logger) {
+	public CustomerDAO(ILogger logger) {
 		this.logger = logger;
 	}
 

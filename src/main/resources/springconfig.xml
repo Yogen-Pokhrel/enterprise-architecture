@@ -12,10 +12,10 @@
 		<property name="customerDAO" ref="customerDAO" />
 	</bean>
 	<bean id="emailSender" class="customers.EmailSender">
-		<property name="logger" ref="logger" />
+		<constructor-arg ref="logger"/>
 	</bean>
 	<bean id="customerDAO" class="customers.CustomerDAO">
-		<property name="logger" ref="logger" />
+		<constructor-arg ref="logger"/>
 	</bean>
 	<bean id="logger" class="customers.Logger" />
 
