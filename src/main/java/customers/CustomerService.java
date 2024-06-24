@@ -1,13 +1,15 @@
 package customers;
 
-public class CustomerService implements ICustomerService {
-	ICustomerDAO customerDAO;
-	IEmailSender emailSender;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-	CustomerService(CustomerDAO customerDAO, EmailSender emailSender) {
-		this.customerDAO = customerDAO;
-		this.emailSender = emailSender;
-	}
+@Service
+public class CustomerService implements ICustomerService {
+	@Autowired
+	ICustomerDAO customerDAO;
+
+	@Autowired
+	IEmailSender emailSender;
 
 	public void addCustomer(String name, String email, String street,
 							String city, String zip) {
