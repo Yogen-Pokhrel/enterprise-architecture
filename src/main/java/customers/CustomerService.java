@@ -4,7 +4,7 @@ public class CustomerService implements ICustomerService {
 	ICustomerDAO customerDAO;
 	IEmailSender emailSender;
 
-	CustomerService(CustomerDAO customerDAO, EmailSender emailSender) {
+	CustomerService(ICustomerDAO customerDAO, IEmailSender emailSender) {
 		this.customerDAO = customerDAO;
 		this.emailSender = emailSender;
 	}

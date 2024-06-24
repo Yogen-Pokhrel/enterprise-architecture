@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
     @Bean
-    public CustomerDAO customerDAO(Logger logger) {
+    public CustomerDAO customerDAO(ILogger logger) {
         return new CustomerDAO(logger);
     }
 
@@ -15,12 +15,12 @@ public class AppConfig {
         return new Logger();
     }
 
-    @Bean EmailSender emailSender(Logger logger){
+    @Bean EmailSender emailSender(ILogger logger){
         return new EmailSender(logger);
     }
 
     @Bean
-    public CustomerService customerService(CustomerDAO customerDAO, EmailSender emailSender){
+    public CustomerService customerService(ICustomerDAO customerDAO, IEmailSender emailSender){
         return new CustomerService(customerDAO, emailSender);
     }
 }

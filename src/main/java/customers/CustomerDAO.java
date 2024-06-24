@@ -4,7 +4,7 @@ public class CustomerDAO implements ICustomerDAO{
 
 	private ILogger logger;
 
-	public CustomerDAO(Logger logger) {
+	public CustomerDAO(ILogger logger) {
 		this.logger = logger;
 	}
 

@@ -5,7 +5,7 @@ public class EmailSender implements IEmailSender {
 	String outgoingMailServer = "smtp.acme.com";
 	private ILogger logger;
 
-	public EmailSender(Logger logger) {
+	public EmailSender(ILogger logger) {
 		this.logger = logger;
 	}
 
