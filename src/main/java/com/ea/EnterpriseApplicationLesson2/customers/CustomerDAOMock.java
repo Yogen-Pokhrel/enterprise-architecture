@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile("two")
+@Profile("test")
 public class CustomerDAOMock implements ICustomerDAO {
     @Override
     public void save(Customer customer) {
