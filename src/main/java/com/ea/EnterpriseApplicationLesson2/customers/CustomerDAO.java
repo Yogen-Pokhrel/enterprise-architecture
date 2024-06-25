@@ -3,8 +3,9 @@ package com.ea.EnterpriseApplicationLesson2.customers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 @Profile("production")
 public class CustomerDAO implements ICustomerDAO{
 

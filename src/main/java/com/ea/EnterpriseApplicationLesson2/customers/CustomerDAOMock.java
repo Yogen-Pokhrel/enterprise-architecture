@@ -1,9 +1,9 @@
 package com.ea.EnterpriseApplicationLesson2.customers;
 
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 @Profile("test")
 public class CustomerDAOMock implements ICustomerDAO {
     @Override

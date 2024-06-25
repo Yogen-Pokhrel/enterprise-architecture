@@ -14,6 +14,9 @@ public class EnterpriseApplicationLesson2Application implements CommandLineRunne
 	@Autowired
 	ICustomerService customerService;
 
+	@Autowired
+	IProductService productService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(EnterpriseApplicationLesson2Application.class, args);
 	}
@@ -22,5 +25,6 @@ public class EnterpriseApplicationLesson2Application implements CommandLineRunne
 	public void run(String... args) throws Exception {
 		customerService.addCustomer("Frank Brown", "fbrown@acme.com",
 				"mainstreet 5", "Chicago", "60613");
+		productService.addProduct("Refrigerator", 1600.0);
 	}
 }
