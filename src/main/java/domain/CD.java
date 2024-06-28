@@ -14,4 +14,11 @@ public class CD extends Product {
         super();
         this.artist = artist;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\n\t" +
+                "artist='" + artist + '\'' +
+                '}';
+    }
 }

@@ -14,4 +14,11 @@ public class Book extends Product {
         super();
         this.isbn = isbn;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\n\tisbn='" + isbn + '\'' +
+                '}';
+    }
 }

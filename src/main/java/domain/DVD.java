@@ -14,4 +14,11 @@ public class DVD extends Product{
         super();
         this.genre = genre;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\n\t" +
+                "genre='" + genre + '\'' +
+                '}';
+    }
 }

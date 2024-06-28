@@ -63,19 +63,7 @@ public class CommonService {
             System.out.println("Order line: quantity= "
                     + orderline.getQuantity());
             Product product = orderline.getProduct();
-            System.out.print("Product: " + product.getName() + " "
-                    + product.getDescription() + " " + product.getPrice());
-            if(product instanceof CD){
-                System.out.println(" CD: " + ((CD) product).getArtist());
-            }
-
-            if(product instanceof DVD){
-                System.out.println(" DVD: " + ((DVD) product).getGenre());
-            }
-
-            if(product instanceof Book){
-                System.out.println(" Book: " + ((Book) product).getIsbn());
-            }
+            System.out.println("Product " + product);
         }
     }
 }
