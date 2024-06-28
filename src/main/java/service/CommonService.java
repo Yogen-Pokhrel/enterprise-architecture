@@ -1,9 +1,6 @@
 package service;
 
-import domain.Customer;
-import domain.Order;
-import domain.OrderLine;
-import domain.Product;
+import domain.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,13 +21,13 @@ public class CommonService {
     ProductRepository productRepository;
 
     public void runProductActions(){
-        Product product = new Product();
+        Product product = new DVD("Movies");
         product.setName("Hibernate 3");
         product.setDescription("Good book on Hibernate");
         product.setPrice(35.50);
         OrderLine ol1 = new OrderLine(2, product);
 
-        Product product2 = new Product();
+        Product product2 = new CD("Arjit Singh");
         product2.setName("The best of Queen");
         product2.setDescription("Album from 1995");
         product2.setPrice(12.98);
@@ -55,6 +52,7 @@ public class CommonService {
             System.out.println("Order with ID: " + orderId + " is null");
             return;
         }
+
         System.out.println("Order with orderNumber: " + order.getOrdernr());
         System.out.println("Order date: " + order.getDate());
         System.out.println("Order status: " + order.getStatus());
@@ -65,9 +63,19 @@ public class CommonService {
             System.out.println("Order line: quantity= "
                     + orderline.getQuantity());
             Product product = orderline.getProduct();
-            System.out.println("Product: " + product.getName() + " "
+            System.out.print("Product: " + product.getName() + " "
                     + product.getDescription() + " " + product.getPrice());
-        }
+            if(product instanceof CD){
+                System.out.println(" CD: " + ((CD) product).getArtist());
+            }
 
+            if(product instanceof DVD){
+                System.out.println(" DVD: " + ((DVD) product).getGenre());
+            }
+
+            if(product instanceof Book){
+                System.out.println(" Book: " + ((Book) product).getIsbn());
+            }
+        }
     }
 }

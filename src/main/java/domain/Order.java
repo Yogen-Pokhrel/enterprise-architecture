@@ -50,5 +50,4 @@ public class Order {
 	public boolean addOrderLine(OrderLine ol) {
 		return orderlines.add(ol);
 	}
-
 }

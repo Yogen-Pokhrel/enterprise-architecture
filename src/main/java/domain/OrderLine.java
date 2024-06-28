@@ -26,5 +26,4 @@ public class OrderLine {
 		this.quantity = quantity;
 		this.product = product;
 	}
-
 }
