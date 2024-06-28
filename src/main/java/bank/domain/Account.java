@@ -1,22 +1,28 @@
 package bank.domain;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.*;
 
-
+@Entity
+@Getter
+@Setter
 public class Account {
+	@Id
 	long accountnumber;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "")
 	Collection<AccountEntry> entryList = new ArrayList<AccountEntry>();
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "customer_id")
 	Customer customer;
 
-	
-	public Account (long accountnr){
-		this.accountnumber = accountnr;
-	}
-	public long getAccountnumber() {
-		return accountnumber;
-	}
-	public void setAccountnumber(long accountnumber) {
-		this.accountnumber = accountnumber;
+	public Account(){}
+	public Account (long accountNumber){
+		this.accountnumber = accountNumber;
 	}
 	public double getBalance() {
 		double balance=0;
@@ -43,16 +49,6 @@ public class Account {
 		AccountEntry toEntry = new AccountEntry(new Date(), amount, description, ""+toAccount.getAccountnumber(), toAccount.getCustomer().getName());
 		entryList.add(fromEntry);	
 		toAccount.addEntry(toEntry);
-	}
-	
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-	public Collection<AccountEntry> getEntryList() {
-		return entryList;
 	}
 
 	@Override

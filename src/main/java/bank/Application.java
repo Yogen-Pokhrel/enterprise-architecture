@@ -7,6 +7,7 @@ import bank.domain.AccountEntry;
 import bank.domain.Customer;
 import bank.service.AccountService;
 import bank.service.IAccountService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,6 +24,7 @@ public class Application implements CommandLineRunner {
 		SpringApplication.run(Application.class, args);
 	}
 
+	@Transactional
 	@Override
 	public void run(String... args) throws Exception {
 		// create 2 accounts;
