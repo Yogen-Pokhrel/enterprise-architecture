@@ -1,12 +1,20 @@
 package bank.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import bank.domain.Account;
+import bank.domain.AccountEntry;
 import bank.domain.Customer;
+import bank.dto.AccountDto;
+import bank.dto.AccountEntryDto;
+import bank.helpers.ListMapper;
 import bank.jms.IJMSSender;
 import bank.logging.ILogger;
 import bank.repository.AccountRepository;
+import jakarta.transaction.Transactional;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,15 +33,23 @@ public class AccountService implements IAccountService {
 	@Autowired
 	private ILogger logger;
 
-	public Account createAccount(long accountNumber, String customerName) {
+	@Autowired
+	ModelMapper modelMapper;
+
+	@Autowired
+	ListMapper listMapper;
+
+	@Transactional
+	public AccountDto createAccount(long accountNumber, String customerName) {
 		Account account = new Account(accountNumber);
 		Customer customer = new Customer(customerName);
 		account.setCustomer(customer);
 		account = accountRepository.save(account);
 		logger.log("createAccount with parameters accountNumber= "+accountNumber+" , customerName= "+customerName);
-		return account;
+		return modelMapper.map(account, AccountDto.class);
 	}
 
+	@Transactional
 	public void deposit(long accountNumber, double amount) throws Exception {
 		Account account = accountRepository.findById(accountNumber).orElseThrow(()->new Exception("Account with accountNumber= "+accountNumber+" not found"));
 		account.deposit(amount);
@@ -44,14 +60,20 @@ public class AccountService implements IAccountService {
 		}
 	}
 
-	public Account getAccount(long accountNumber) throws Exception {
-		return accountRepository.findById(accountNumber).orElseThrow(()->new Exception("Account with accountNumber= "+accountNumber+" not found"));
+	@Transactional
+	public AccountDto getAccount(long accountNumber) throws Exception {
+		Account account = accountRepository.findById(accountNumber).orElseThrow(()->new Exception("Account with accountNumber= "+accountNumber+" not found"));
+		return modelMapper.map(account, AccountDto.class);
 	}
 
-	public Collection<Account> getAllAccounts() {
-		return accountRepository.findAll();
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public Collection<AccountDto> getAllAccounts() {
+		Collection<Account> accounts = accountRepository.findAll();
+		return (Collection<AccountDto>)listMapper.mapCollection(accounts, AccountDto.class);
 	}
 
+	@Transactional
 	public void withdraw(long accountNumber, double amount) throws Exception {
 		Account account = accountRepository.findById(accountNumber).orElseThrow(()->new Exception("Account with accountNumber= "+accountNumber+" not found"));
 		account.withdraw(amount);
@@ -59,6 +81,7 @@ public class AccountService implements IAccountService {
 		logger.log("withdraw with parameters accountNumber= "+accountNumber+" , amount= "+amount);
 	}
 
+	@Transactional
 	public void depositEuros(long accountNumber, double amount) throws Exception {
 		Account account = accountRepository.findById(accountNumber).orElseThrow(()->new Exception("Account with accountNumber= "+accountNumber+" not found"));
 		double amountDollars = currencyConverter.euroToDollars(amount);
@@ -70,6 +93,7 @@ public class AccountService implements IAccountService {
 		}
 	}
 
+	@Transactional
 	public void withdrawEuros(long accountNumber, double amount) throws Exception {
 		Account account = accountRepository.findById(accountNumber).orElseThrow(()->new Exception("Account with accountNumber= "+accountNumber+" not found"));
 		double amountDollars = currencyConverter.euroToDollars(amount);
@@ -78,6 +102,7 @@ public class AccountService implements IAccountService {
 		logger.log("withdrawEuros with parameters accountNumber= "+accountNumber+" , amount= "+amount);
 	}
 
+	@Transactional
 	public void transferFunds(long fromAccountNumber, long toAccountNumber, double amount, String description) throws Exception {
 		Account fromAccount = accountRepository.findById(fromAccountNumber).orElseThrow(()->new Exception("Account not found with accountNumber= "+fromAccountNumber));
 		Account toAccount = accountRepository.findById(toAccountNumber).orElseThrow(()->new Exception("Account not found with accountNumber= "+toAccountNumber));
@@ -88,5 +113,13 @@ public class AccountService implements IAccountService {
 		if (amount > 10000){
 			jmsSender.sendJMSMessage("TransferFunds of $ "+amount+" from account with accountNumber= "+fromAccount+" to account with accountNumber= "+toAccount);
 		}
+	}
+
+	public double calculateBalance(Collection<AccountEntryDto> entryList) {
+		double balance=0;
+		for (AccountEntryDto entry : entryList) {
+			balance+=entry.getAmount();
+		}
+		return balance;
 	}
 }

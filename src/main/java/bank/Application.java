@@ -1,30 +1,42 @@
 package bank;
 
 import java.util.Collection;
+import java.util.List;
 
 import bank.domain.Account;
 import bank.domain.AccountEntry;
 import bank.domain.Customer;
+import bank.dto.AccountDto;
+import bank.dto.AccountEntryDto;
+import bank.dto.CustomerDto;
 import bank.service.AccountService;
 import bank.service.IAccountService;
 import jakarta.transaction.Transactional;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
 	@Autowired
+	@Lazy
 	private IAccountService accountService;
+
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@Transactional
 	@Override
 	public void run(String... args) throws Exception {
 		// create 2 accounts;
@@ -40,23 +52,23 @@ public class Application implements CommandLineRunner {
 		accountService.transferFunds(4253892, 1263862, 100, "payment of invoice 10232");
 		// show balances
 
-		Collection<Account> accountlist = accountService.getAllAccounts();
-		Customer customer = null;
-		for (Account account : accountlist) {
+		Collection<AccountDto> accountlist = accountService.getAllAccounts();
+		CustomerDto customer = null;
+		for (AccountDto account : accountlist) {
 			customer = account.getCustomer();
 			System.out.println("Statement for Account: " + account.getAccountnumber());
 			System.out.println("Account Holder: " + customer.getName());
 			System.out.println("-Date-------------------------"
 					+ "-Description------------------"
 					+ "-Amount-------------");
-			for (AccountEntry entry : account.getEntryList()) {
+			for (AccountEntryDto entry : account.getEntryList()) {
 				System.out.printf("%30s%30s%20.2f\n", entry.getDate()
 						.toString(), entry.getDescription(), entry.getAmount());
 			}
 			System.out.println("----------------------------------------"
 					+ "----------------------------------------");
 			System.out.printf("%30s%30s%20.2f\n\n", "", "Current Balance:",
-					account.getBalance());
+					accountService.calculateBalance(account.getEntryList()));
 		}
 	}
 }
