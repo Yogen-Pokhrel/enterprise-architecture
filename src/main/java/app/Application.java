@@ -78,7 +78,7 @@ public class Application implements CommandLineRunner{
 		School school1 = new School();
 		school1.setName("BTI");
 		schoolRepository.save(school1);
-		addStudentsToSchool(school1.getId(), 1000);
+		addStudentsToSchool(school1.getId(), 300);
 
 		School school2 = new School();
 		school2.setName("Maharishi");
@@ -88,7 +88,7 @@ public class Application implements CommandLineRunner{
 		School school3 = new School();
 		school3.setName("Harikul");
 		schoolRepository.save(school3);
-		addStudentsToSchool(school3.getId(), 10000);
+		addStudentsToSchool(school3.getId(), 400);
 	}
 
 	public void addStudentsToSchool(Long schoolId, int numberOfStudents) {
@@ -103,6 +103,7 @@ public class Application implements CommandLineRunner{
 			student.setEmail("student" + i + "@school.com");
 			students.add(student);
 			school.addStudent(student);
+			System.out.println("Inserting student  "+i);
 		}
 
 		schoolRepository.save(school);
@@ -111,7 +112,8 @@ public class Application implements CommandLineRunner{
 	public void fetchSchools() {
 		System.out.println("Fetching schools ...");
 		long start = System.currentTimeMillis();
-		schoolRepository.findAll();
+		System.out.println("--- Printing school names-----");
+		schoolRepository.findAll().forEach((e) -> System.out.println(e.getName()));
 		long finish = System.currentTimeMillis();
 		long timeElapsed = finish - start;
 		System.out.println("To fetch schools took "+timeElapsed+" ms");
@@ -120,7 +122,13 @@ public class Application implements CommandLineRunner{
 	public void fetchSchoolsEager() {
 		System.out.println("Fetching schools with students ...");
 		long start = System.currentTimeMillis();
-		schoolRepository.findAllEager();
+		List<School> schools = schoolRepository.findAllEager();
+		schools.forEach((e) -> {
+			System.out.println("School=" + e.getName());
+			e.getStudents().forEach((s) -> {
+				System.out.println("Student= " + s.getFirstName() + " " + s.getLastName());
+			});
+		});
 		long finish = System.currentTimeMillis();
 		long timeElapsed = finish - start;
 		System.out.println("To fetch schools with students it took "+timeElapsed+" ms");
