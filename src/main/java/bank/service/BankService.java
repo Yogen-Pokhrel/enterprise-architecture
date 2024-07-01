@@ -1,5 +1,7 @@
 package bank.service;
+import bank.domain.TraceRecord;
 import bank.integration.EmailSender;
+import bank.repositories.TraceRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,6 +9,7 @@ import bank.domain.Account;
 import bank.domain.Customer;
 import bank.repositories.AccountRepository;
 import bank.repositories.CustomerRepository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -17,6 +20,9 @@ public class BankService {
 	private CustomerRepository customerRepository;
 	@Autowired
 	private EmailSender emailSender;
+
+	@Autowired
+	TraceService traceService;
 	
 
 	@Transactional
@@ -28,10 +34,11 @@ public class BankService {
 			customer.setAccount(account);
 			customerRepository.saveCustomer(customer);
 			emailSender.sendEmail(emailAddress, "Welcome "+customerName);
+			traceService.traceRecord(customerName, AccountNumber, true);
 		}catch (Exception e){
+			traceService.traceRecord(customerName, AccountNumber, false);
 			emailSender.sendEmail(emailAddress, "Hi, " + customerName + ", We could not create your account "+AccountNumber);
 			throw e;
 		}
 	}
-
 }

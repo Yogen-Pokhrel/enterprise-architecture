@@ -24,23 +24,16 @@ public class Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		//separate try catch such that if one fails it doesnot affect the other
-		try{
-			bankService.createCustomerAndAccount(12, "Jack Bauer", "jbauer@yahoo.com","1223");
-		}catch (Exception e){
-			System.out.println("Error: " + e.getMessage());
-		}
+		executeCreateCustomerAndAccount(12, "Jack Bauer", "jbauer@yahoo.com", "1223");
+		executeCreateCustomerAndAccount(14, "Frank Brown", "frankbrown@gmail.com", "1248");
+		executeCreateCustomerAndAccount(16, "Yogen Pokhrel", "yogen@gmail.com", "1249");
+	}
 
-		try{
-			bankService.createCustomerAndAccount(14, "Frank Brown", "frankbrown@gmail.com","1248");
-		}catch (Exception e){
-			System.out.println("Error: " + e.getMessage());
-		}
-
-		try{
-			bankService.createCustomerAndAccount(16, "Yogen Pokhrel", "yogen@gmail.com","1249");
-		}catch (Exception e){
-			System.out.println("Error: " + e.getMessage());
+	private void  executeCreateCustomerAndAccount(int customerId, String customerName, String emailAddress, String accountNumber){
+		try {
+			bankService.createCustomerAndAccount(customerId, customerName, emailAddress, accountNumber);
+		} catch (Exception e) {
+			System.out.println("Error creating account for " + customerName + " with account number " + accountNumber + ": " + e.getMessage());
 		}
 	}
 }
