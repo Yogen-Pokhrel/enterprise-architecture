@@ -21,12 +21,17 @@ public class BankService {
 
 	@Transactional
 	public void createCustomerAndAccount(int customerId, String customerName, String emailAddress, String AccountNumber) throws Exception{
-		Account account = new Account(AccountNumber);
-		accountRepository.save(account);
-		Customer customer = new Customer(customerId, customerName);
-        customer.setAccount(account);
-		customerRepository.saveCustomer(customer);
-		emailSender.sendEmail(emailAddress, "Welcome "+customerName);
+		try{
+			Account account = new Account(AccountNumber);
+			accountRepository.save(account);
+			Customer customer = new Customer(customerId, customerName);
+			customer.setAccount(account);
+			customerRepository.saveCustomer(customer);
+			emailSender.sendEmail(emailAddress, "Welcome "+customerName);
+		}catch (Exception e){
+			emailSender.sendEmail(emailAddress, "Hi, " + customerName + ", We could not create your account "+AccountNumber);
+			throw e;
+		}
 	}
 
 }
