@@ -50,4 +50,15 @@ public class Order {
 	public boolean addOrderLine(OrderLine ol) {
 		return orderlines.add(ol);
 	}
+
+	@Override
+	public String toString() {
+		return "Order{" +
+				"orderlines=" + orderlines +
+				", status='" + status + '\'' +
+				", date='" + date + '\'' +
+				", ordernr='" + ordernr + '\'' +
+				", id=" + id +
+				'}';
+	}
 }

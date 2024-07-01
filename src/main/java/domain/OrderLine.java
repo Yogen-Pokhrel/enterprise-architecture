@@ -26,4 +26,13 @@ public class OrderLine {
 		this.quantity = quantity;
 		this.product = product;
 	}
+
+	@Override
+	public String toString() {
+		return "OrderLine{" +
+				"id=" + id +
+				", quantity=" + quantity +
+				", product=" + product +
+				'}';
+	}
 }
