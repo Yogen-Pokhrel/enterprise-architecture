@@ -5,7 +5,10 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import repositories.*;
+import repositories.CourseRepository;
+import repositories.DepartmentRepository;
+import repositories.GradeRepository;
+import repositories.StudentRepository;
 
 import java.util.List;
 
@@ -13,124 +16,93 @@ import java.util.List;
 public class CommonService {
 
     @Autowired
-    CustomerRepository customerRepository;
+    StudentRepository studentRepository;
 
     @Autowired
-    OrderRepository orderRepository;
+    DepartmentRepository departmentRepository;
 
     @Autowired
-    ProductRepository productRepository;
+    CourseRepository courseRepository;
 
     @Autowired
-    CDRepository cdRepository;
+    GradeRepository gradeRepository;
 
-    @Autowired
-    AddressRepository addressRepository;
+    @Transactional
+    public void runActions(){
+        createRecords();
+        System.out.println("\n\nGet all students from a certain department");
+        System.out.println(studentRepository.findByDepartmentName("Computer Science"));
 
-    public void runProductActions(){
-        Product product = new DVD("Movies");
-        product.setName("Rocky3");
-        product.setDescription("Good book on Hibernate");
-        product.setPrice(35.50);
-        OrderLine ol1 = new OrderLine(2, product);
+        System.out.println("\n\nGet all students who took a course with a certain name.");
+        System.out.println(studentRepository.findDistinctByGradesCourseName("Software Engineering"));
 
-        Product product2 = new CD("Arjit Singh");
-        product2.setName("The best of Queen");
-        product2.setDescription("Album from 1995");
-        product2.setPrice(12.98);
-        OrderLine ol2 = new OrderLine(4, product2);
+        System.out.println("\n\nGet all students from a certain department");
+        System.out.println(studentRepository.findAllByDepartment("Computer Science"));
 
-        Order o1 = new Order("234743", "12/10/06", "open");
-        o1.addOrderLine(ol1);
-        o1.addOrderLine(ol2);
-
-        Customer c1 = new Customer("Frank", "Brown", "Mainstreet 1",
-                "New york", "2389HJ");
-        Customer c2 = new Customer("Yogen", "Pokhrel", "Mainstreet 1",
-                "New york", "43221", "Nepal");
-        c1.addOrder(o1);
-        o1.setCustomer(c1);
-        o1 = orderRepository.save(o1);
-        customerRepository.save(c2);
-
-        printOrder(o1.getId());
-        testQueries();
+        System.out.println("\n\nGet all students who took a course with a certain name.");
+        System.out.println(studentRepository.findAllByCourseName("Software Engineering"));
     }
 
-    public void printOrder(Long orderId) {
-        Order order = orderRepository.findById(orderId).orElse(null);
-        if (order == null) {
-            System.out.println("Order with ID: " + orderId + " is null");
-            return;
-        }
+    public void createRecords(){
+        Department dept1 = new Department();
+        dept1.setName("Computer Science");
+        dept1 = departmentRepository.save(dept1);
 
-        System.out.println("Order with orderNumber: " + order.getOrdernr());
-        System.out.println("Order date: " + order.getDate());
-        System.out.println("Order status: " + order.getStatus());
-        Customer cust = order.getCustomer();
-        System.out.println("Customer: " + cust.getFirstname() + " "
-                + cust.getLastname());
-        for (OrderLine orderline : order.getOrderlines()) {
-            System.out.println("Order line: quantity= "
-                    + orderline.getQuantity());
-            Product product = orderline.getProduct();
-            System.out.println("Product " + product);
-        }
-    }
+        Department dept2 = new Department();
+        dept2.setName("MBA");
+        dept2 = departmentRepository.save(dept2);
 
+        Course course1 = new Course();
+        course1.setName("Enterprise Architecture");
+        course1 = courseRepository.save(course1);
 
-    private void testQueries(){
-        List<Customer> customerList = customerRepository.findAll();
-        System.out.println("\n\n------- Printing Customer List -------");
-        System.out.println(customerList);
+        Course course2 = new Course();
+        course2.setName("Software Engineering");
+        course2 = courseRepository.save(course2);
 
-        System.out.println("\n\nGive all CD’s from U2 with a price smaller than 10 euro");
-        System.out.println(cdRepository.findByArtistAndPriceLessThan("Arjit Singh", 20));
+        Course course3 = new Course();
+        course3.setName("MPP");
+        course3 = courseRepository.save(course3);
 
-        System.out.println("\n\nGive all customers with zip code 2389HJ ");
-        System.out.println(customerRepository.findByAddressZip("2389HJ"));
+        Student student1 = new Student();
+        student1.setName("Dikshya Prasai");
+        student1.setDepartment(dept1);
 
-        System.out.println("\n\nGive all customers who ordered a DVD with the name Rocky3 ");
-        System.out.println(customerRepository.findCustomersByOrderedDVDName("Rocky3"));
+        Grade grade = new Grade();
+        grade.setStudent(student1);
+        grade.setGrade('A');
+        grade.setCourse(course1);
+        student1.addGrade(grade);
 
-        System.out.println("\n\nGive all customers from the USA.");
-        System.out.println(customerRepository.findAllCustomersFromUSA());
+        grade = new Grade();
+        grade.setStudent(student1);
+        grade.setGrade('B');
+        grade.setCourse(course2);
+        student1.addGrade(grade);
 
-        System.out.println("\n\nGive all CD’s from a certain artist");
-        System.out.println(productRepository.findCDsByArtist("Arjit Singh"));
+        studentRepository.save(student1);
 
-        System.out.println("\n\nGive the ordernumbers of all orders with status ‘closed’");
-        System.out.println(orderRepository.findOrderNumbersByStatusClosed());
+        Student student2 = new Student();
+        student2.setName("Jane Henry");
+        student2.setDepartment(dept1);
 
-        System.out.println("\n\nGive the first and lastnames of all customers who live in Amsterdam.");
-        System.out.println(customerRepository.findFirstAndLastNamesByCityAmsterdam());
+        grade = new Grade();
+        grade.setStudent(student2);
+        grade.setGrade('B');
+        grade.setCourse(course1);
+        student2.addGrade(grade);
 
-        System.out.println("\n\nGive the ordernumbers of all orders from customers who live in a certain city (city is a parameter).");
-        System.out.println(orderRepository.findOrderNumbersByCustomerCity("New york"));
+        grade = new Grade();
+        grade.setStudent(student2);
+        grade.setGrade('A');
+        grade.setCourse(course2);
+        student2.addGrade(grade);
 
-        System.out.println("\n\nGive all CD’s from a certain artist with a price bigger than a certain amount (artist and amount are parameter2).");
-        System.out.println(productRepository.findCDsByArtistAndPriceGreaterThan("Arjit Singh", 20));
+        studentRepository.save(student2);
 
-        System.out.println("\n\nGive all addresses in Amsterdam.");
-        System.out.println(addressRepository.findAllAddressesInAmsterdam());
-
-        System.out.println("\n\nGive all CD’s from U2.");
-        System.out.println(cdRepository.findAllCDsByArtistU2("Arjit Singh"));
-
-        System.out.println("\n\nGive the ordernumbers of all orders with status ‘closed’");
-        Specification<Order> spec = OrderSpecifications.hasStatus("closed");
-        List<Order> closedOrders = orderRepository.findAll(spec);
-        System.out.println(closedOrders);
-
-        System.out.println("\n\nGive all customers who live in Amsterdam.");
-        Specification<Customer> customerSpecification = CustomerSpecifications.livesInCity("Amsterdam");
-        System.out.println(customerRepository.findAll(customerSpecification));
-
-        System.out.println("\n\nGive all CD’s from a certain artist with a price bigger than a certain amount (artist and amount are parameter2).");
-        Specification<CD> cdSpecification = CDSpecifications.byArtistAndPriceGreaterThan("Arjit Singh", 20);
-        System.out.println(cdRepository.findAll(cdSpecification));
-
-
-
+        Student student3 = new Student();
+        student3.setName("Yogen Pokhrel");
+        student3.setDepartment(dept2);
+        studentRepository.save(student3);
     }
 }

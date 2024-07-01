@@ -1,9 +1,5 @@
 package app;
 
-import domain.Customer;
-import domain.Order;
-import domain.OrderLine;
-import domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -31,6 +27,6 @@ public class OrderApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		commonService.runProductActions();
+		commonService.runActions();
 	}
 }
