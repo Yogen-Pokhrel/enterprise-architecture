@@ -5,8 +5,5 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface SchoolRepository extends JpaRepository<School, Long> {
-
-    @Query("SELECT s, s.students FROM School s")
-    List<School> findAllEager();
+public interface PersonRepository extends JpaRepository<Person, Long> {
 }

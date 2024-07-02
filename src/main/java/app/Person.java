@@ -10,27 +10,28 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class School {
+public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "school")
-    List<Student> students = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner", cascade = CascadeType.PERSIST)
+    private List<Pet> pets = new ArrayList<>();
 
-    public void addStudent(Student student){
-        students.add(student);
-        student.setSchool(this);
+    public void addPet(Pet pet) {
+        pets.add(pet);
+        pet.setOwner(this);
     }
+
 
     @Override
     public String toString() {
-        return "School{" +
+        return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", students=" + students +
+                ", pets=" + pets +
                 '}';
     }
 }
