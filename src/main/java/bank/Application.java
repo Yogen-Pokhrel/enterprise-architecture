@@ -1,17 +1,11 @@
 package bank;
 
 import java.util.Collection;
-import java.util.List;
 
-import bank.domain.Account;
-import bank.domain.AccountEntry;
-import bank.domain.Customer;
 import bank.dto.AccountDto;
 import bank.dto.AccountEntryDto;
 import bank.dto.CustomerDto;
-import bank.service.AccountService;
 import bank.service.IAccountService;
-import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

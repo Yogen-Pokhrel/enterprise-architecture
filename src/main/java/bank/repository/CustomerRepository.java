@@ -1,7 +1,7 @@
 package bank.repository;
 
 import bank.domain.Customer;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface CustomerRepository extends CrudRepository<Customer, Integer> {
+public interface CustomerRepository extends MongoRepository<Customer, Integer> {
 }

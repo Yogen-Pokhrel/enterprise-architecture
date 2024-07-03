@@ -1,22 +1,14 @@
 package bank.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 
-@Entity
 @Getter
 @Setter
 public class AccountEntry {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-
 	private Date date;
 	private double amount;
 	private String description;
@@ -37,7 +29,6 @@ public class AccountEntry {
 	@Override
 	public String toString() {
 		return "AccountEntry{" +
-				"id=" + id +
 				", date=" + date +
 				", amount=" + amount +
 				", description='" + description + '\'' +

@@ -1,23 +1,21 @@
 package bank.domain;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.*;
 
-@Entity
+@Document
 @Getter
 @Setter
 public class Account {
 	@Id
 	long accountnumber;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "")
 	Collection<AccountEntry> entryList = new ArrayList<AccountEntry>();
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "customer_id")
 	Customer customer;
 
 	public Account(){}
