@@ -1,30 +1,26 @@
 package app;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Document
 @Getter
 @Setter
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner", cascade = CascadeType.PERSIST)
     private List<Pet> pets = new ArrayList<>();
 
     public void addPet(Pet pet) {
         pets.add(pet);
-        pet.setOwner(this);
     }
-
 
     @Override
     public String toString() {

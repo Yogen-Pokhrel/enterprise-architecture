@@ -1,9 +1,6 @@
 package app;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.util.List;
-
-public interface PersonRepository extends JpaRepository<Person, Long> {
+public interface PersonRepository extends MongoRepository<Person, Long> {
 }

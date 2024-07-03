@@ -33,9 +33,10 @@ public class Application implements CommandLineRunner{
 	public void createPersonsAndPets() {
 		System.out.println("Creating persons with pets ...");
 		long start = System.currentTimeMillis();
-		for(int i = 0; i < 10000; i++) {
+		for(int i = 1; i < 10000; i++) {
 			Person person = new Person();
 			person.setName("Person " + i);
+			person.setId(i);
 			for(int j = 0; j < 10; j++) {
 				Pet pet = new Pet();
 				pet.setName("Pet " + j);
@@ -45,7 +46,7 @@ public class Application implements CommandLineRunner{
 		}
 		long finish = System.currentTimeMillis();
 		long timeElapsed = finish - start;
-		System.out.println("To insert 10,000 persons with pets it took "+timeElapsed+" ms in psql");
+		System.out.println("To insert 10,000 persons with pets it took "+timeElapsed+" ms in mongodb");
 	}
 
 	public void fetchPersons() {
@@ -55,7 +56,7 @@ public class Application implements CommandLineRunner{
 //		personList.forEach((e) -> System.out.println(e.getName() + " pets: " + e.getPets()));
 		long finish = System.currentTimeMillis();
 		long timeElapsed = finish - start;
-		System.out.println("To fetch persons with pets it took "+timeElapsed+" ms in psql");
+		System.out.println("To fetch persons with pets it took "+timeElapsed+" ms in mongodb");
 	}
 
 
