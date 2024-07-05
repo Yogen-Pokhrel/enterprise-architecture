@@ -15,6 +15,12 @@ public class ApiResponse<T> {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private ResponseMeta meta;
 
+    public ApiResponse(){
+        this.success = false;
+        this.message = "";
+        this.data = null;
+    }
+
     ApiResponse(String message, boolean success) {
         this.data = null;
         this.message = message;
