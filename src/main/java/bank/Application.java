@@ -3,15 +3,14 @@ package bank;
 import java.util.Collection;
 import java.util.List;
 
-import bank.domain.Account;
-import bank.domain.AccountEntry;
-import bank.domain.Customer;
-import bank.dto.AccountDto;
-import bank.dto.AccountEntryDto;
-import bank.dto.CustomerDto;
-import bank.service.AccountService;
+import bank.configuration.Currency;
+import bank.dto.request.CreateAccountDto;
+import bank.dto.request.TransactionDto;
+import bank.dto.request.TransferFundsDto;
+import bank.dto.response.AccountDto;
+import bank.dto.response.AccountEntryDto;
+import bank.dto.response.CustomerDto;
 import bank.service.IAccountService;
-import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,8 +24,7 @@ import org.springframework.context.annotation.Lazy;
 public class Application implements CommandLineRunner {
 
 	@Autowired
-	@Lazy
-	private IAccountService accountService;
+	Client client;
 
 	@Bean
 	public ModelMapper modelMapper() {
@@ -39,36 +37,74 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// create 2 accounts;
-		accountService.createAccount(1263862, "Frank Brown");
-		accountService.createAccount(4253892, "John Doe");
-		//use account 1;
-		accountService.deposit(1263862, 240);
-		accountService.deposit(1263862, 529);
-		accountService.withdrawEuros(1263862, 230);
-		//use account 2;
-		accountService.deposit(4253892, 12450);
-		accountService.depositEuros(4253892, 200);
-		accountService.transferFunds(4253892, 1263862, 100, "payment of invoice 10232");
-		// show balances
+		try {
+			// Create an account
+			CreateAccountDto createAccountDto = new CreateAccountDto();
+			createAccountDto.setAccountNumber(123456789L);
+			createAccountDto.setCustomerName("John Doe");
+			AccountDto createdAccount = client.createAccount(createAccountDto);
+			System.out.println("Created Account: " + createdAccount);
 
-		Collection<AccountDto> accountlist = accountService.getAllAccounts();
-		CustomerDto customer = null;
-		for (AccountDto account : accountlist) {
-			customer = account.getCustomer();
-			System.out.println("Statement for Account: " + account.getAccountnumber());
-			System.out.println("Account Holder: " + customer.getName());
-			System.out.println("-Date-------------------------"
-					+ "-Description------------------"
-					+ "-Amount-------------");
-			for (AccountEntryDto entry : account.getEntryList()) {
-				System.out.printf("%30s%30s%20.2f\n", entry.getDate()
-						.toString(), entry.getDescription(), entry.getAmount());
+			createAccountDto = new CreateAccountDto();
+			createAccountDto.setAccountNumber(123456788L);
+			createAccountDto.setCustomerName("Yogen Pokhrel");
+			createdAccount = client.createAccount(createAccountDto);
+			System.out.println("Created Account: " + createdAccount);
+
+			// Perform a transaction
+			TransactionDto transactionDto = new TransactionDto();
+			transactionDto.setAction("DEPOSIT");
+			transactionDto.setCurrency("USD");
+			transactionDto.setAmount(200.0);
+			client.transaction(123456789L, transactionDto);
+			System.out.println("Transaction completed successfully");
+
+			// Perform a withdrawal
+			transactionDto = new TransactionDto();
+			transactionDto.setAction("WITHDRAW");
+			transactionDto.setCurrency("USD");
+			transactionDto.setAmount(20.0);
+			client.transaction(123456789L, transactionDto);
+			System.out.println("Transaction completed successfully");
+
+
+			try{
+				// Perform a withdrawal, this should throw error as the account doesnot have enough funds
+				transactionDto = new TransactionDto();
+				transactionDto.setAction("WITHDRAW");
+				transactionDto.setCurrency("USD");
+				transactionDto.setAmount(20.0);
+				client.transaction(123456788L, transactionDto);
+				System.out.println("Transaction completed successfully");
+			}catch (Exception e){
+				System.out.println("Error:" + e.getMessage());
 			}
-			System.out.println("----------------------------------------"
-					+ "----------------------------------------");
-			System.out.printf("%30s%30s%20.2f\n\n", "", "Current Balance:",
-					accountService.calculateBalance(account.getEntryList()));
+
+			// Get the account
+			AccountDto retrievedAccount = client.getAccount(123456789L);
+			System.out.println("Retrieved Account: " + retrievedAccount);
+
+			// Get all accounts
+			List<AccountDto> accounts = client.getAllAccounts();
+			System.out.println("All Accounts: " + accounts);
+
+			// Transfer funds
+			TransferFundsDto transferFundsDto = new TransferFundsDto();
+			transferFundsDto.setFromAccountId(123456789L);
+			transferFundsDto.setToAccountId(123456788L);
+			transferFundsDto.setAmount(75.0);
+			transferFundsDto.setDescription("Transfer");
+			client.transferFunds(transferFundsDto);
+			System.out.println("Funds transferred successfully");
+
+			// Get the account
+			retrievedAccount = client.getAccount(123456788L);
+			System.out.println("Retrieved Account: " + retrievedAccount);
+
+
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+//			e.printStackTrace();
 		}
 	}
 }

@@ -11,7 +11,7 @@ import java.util.*;
 @Setter
 public class Account {
 	@Id
-	long accountnumber;
+	long accountNumber;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "")
 	Collection<AccountEntry> entryList = new ArrayList<AccountEntry>();
@@ -22,7 +22,7 @@ public class Account {
 
 	public Account(){}
 	public Account (long accountNumber){
-		this.accountnumber = accountNumber;
+		this.accountNumber = accountNumber;
 	}
 	public double getBalance() {
 		double balance=0;
@@ -45,14 +45,14 @@ public class Account {
 	}
 
 	public void transferFunds(Account toAccount, double amount, String description){
-		AccountEntry fromEntry = new AccountEntry(new Date(), -amount, description, ""+toAccount.getAccountnumber(), toAccount.getCustomer().getName());
-		AccountEntry toEntry = new AccountEntry(new Date(), amount, description, ""+toAccount.getAccountnumber(), toAccount.getCustomer().getName());
+		AccountEntry fromEntry = new AccountEntry(new Date(), -amount, description, ""+toAccount.getAccountNumber(), toAccount.getCustomer().getName());
+		AccountEntry toEntry = new AccountEntry(new Date(), amount, description, ""+toAccount.getAccountNumber(), toAccount.getCustomer().getName());
 		entryList.add(fromEntry);	
 		toAccount.addEntry(toEntry);
 	}
 
 	@Override
 	public String toString() {
-		return "Account [account number=" + accountnumber + ", entryListCount=" + entryList.size() + " " + customer + "]";
+		return "Account [account number=" + accountNumber + ", entryListCount=" + entryList.size() + " " + customer + "]";
 	}
 }
