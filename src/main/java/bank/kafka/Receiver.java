@@ -28,6 +28,7 @@ public class Receiver {
         try {
             CreateAccountDto createAccountDto = objectMapper.readValue(data, CreateAccountDto.class);
             accountService.createAccount(createAccountDto.getAccountNumber(), createAccountDto.getCustomerName());
+            System.out.println("Kafka Created account " + createAccountDto.getAccountNumber());
         } catch (Exception e) {
             System.out.println("Kafka receiver: Cannot convert : " + data +" to a CreateAccountDto object");
         }
@@ -39,6 +40,7 @@ public class Receiver {
         try {
             TransferFundsDto transferFundsDto = objectMapper.readValue(data, TransferFundsDto.class);
             accountService.transferFunds(transferFundsDto.getFromAccountId(), transferFundsDto.getToAccountId(),transferFundsDto.getAmount(), transferFundsDto.getDescription());
+            System.out.println("Kafka Funds transferred" + transferFundsDto.getAmount());
         } catch (Exception e) {
             System.out.println("Kafka receiver: Cannot convert : " + data +" to a TransferFundsDto object");
         }
@@ -47,6 +49,7 @@ public class Receiver {
     @KafkaListener(topics = {"transaction"})
     public void transaction(@Payload String data) {
         ObjectMapper objectMapper = new ObjectMapper();
+        System.out.println("Kafka transaction" + data);
         try {
             TransactionDto transactionDto = objectMapper.readValue(data, TransactionDto.class);
             TransactionAction action = TransactionAction.valueOf(transactionDto.getAction());
@@ -59,7 +62,8 @@ public class Receiver {
                 throw new NoResourceFoundException("No resource found for action: " + action);
             }
         } catch (Exception e) {
-            System.out.println("Kafka receiver: Cannot convert : " + data +" to a TransferFundsDto object");
+            System.out.println("Kafka receiver: Cannot convert : " + data +" to a TransactionDto object");
+            System.out.println(e.getMessage());
         }
     }
 }
