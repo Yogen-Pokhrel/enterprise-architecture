@@ -10,9 +10,12 @@ import bank.dto.request.TransferFundsDto;
 import bank.dto.response.AccountDto;
 import bank.dto.response.AccountEntryDto;
 import bank.dto.response.CustomerDto;
+import bank.service.AccountService;
 import bank.service.IAccountService;
 import bank.service.MailProperties;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,6 +30,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @EnableConfigurationProperties(MailProperties.class)
 public class Application implements CommandLineRunner {
+
+	Logger logger = LoggerFactory.getLogger(Application.class);
 
 	@Autowired
 	Client client;
@@ -48,13 +53,13 @@ public class Application implements CommandLineRunner {
 			createAccountDto.setAccountNumber(123456789L);
 			createAccountDto.setCustomerName("John Doe");
 			AccountDto createdAccount = client.createAccount(createAccountDto);
-			System.out.println("Created Account: " + createdAccount);
+            logger.info("Created Account: {}", createdAccount);
 
 			createAccountDto = new CreateAccountDto();
 			createAccountDto.setAccountNumber(123456788L);
 			createAccountDto.setCustomerName("Yogen Pokhrel");
 			createdAccount = client.createAccount(createAccountDto);
-			System.out.println("Created Account: " + createdAccount);
+			logger.info("Created Account: {}", createdAccount);
 
 			// Perform a transaction
 			TransactionDto transactionDto = new TransactionDto();
@@ -62,7 +67,7 @@ public class Application implements CommandLineRunner {
 			transactionDto.setCurrency("USD");
 			transactionDto.setAmount(20000.0);
 			client.transaction(123456789L, transactionDto);
-			System.out.println("Transaction completed successfully");
+			logger.info("Transaction completed successfully");
 
 			// Perform a withdrawal
 			transactionDto = new TransactionDto();
@@ -70,7 +75,7 @@ public class Application implements CommandLineRunner {
 			transactionDto.setCurrency("USD");
 			transactionDto.setAmount(20.0);
 			client.transaction(123456789L, transactionDto);
-			System.out.println("Transaction completed successfully");
+			logger.info("Transaction completed successfully");
 
 
 			try{
@@ -80,18 +85,18 @@ public class Application implements CommandLineRunner {
 				transactionDto.setCurrency("USD");
 				transactionDto.setAmount(20.0);
 				client.transaction(123456788L, transactionDto);
-				System.out.println("Transaction completed successfully");
+				logger.info("Transaction completed successfully");
 			}catch (Exception e){
-				System.out.println("Error:" + e.getMessage());
+                logger.error("Error:{}", e.getMessage());
 			}
 
 			// Get the account
 			AccountDto retrievedAccount = client.getAccount(123456789L);
-			System.out.println("Retrieved Account: " + retrievedAccount);
+            logger.info("Retrieved Account: {}", retrievedAccount);
 
 			// Get all accounts
 			List<AccountDto> accounts = client.getAllAccounts();
-			System.out.println("All Accounts: " + accounts);
+			logger.info("All Accounts: {}", accounts);
 
 			// Transfer funds
 			TransferFundsDto transferFundsDto = new TransferFundsDto();
@@ -100,15 +105,15 @@ public class Application implements CommandLineRunner {
 			transferFundsDto.setAmount(75.0);
 			transferFundsDto.setDescription("Transfer");
 			client.transferFunds(transferFundsDto);
-			System.out.println("Funds transferred successfully");
+			logger.info("Funds transferred successfully");
 
 			// Get the account
 			retrievedAccount = client.getAccount(123456788L);
-			System.out.println("Retrieved Account: " + retrievedAccount);
+			logger.info("Retrieved Account: {}", retrievedAccount);
 
 
 		} catch (Exception e) {
-			System.out.println("Error: " + e.getMessage());
+            logger.error("Error: {}", e.getMessage());
 //			e.printStackTrace();
 		}
 	}
