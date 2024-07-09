@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: lab12
+
+server:
+  port: 8086
+
+
+demo:
+  application-name: MyApp
+  version: 2
+  server-url: https://localhost:8086
+  server-name: yogen_server
+  countries:
+    - USA
+    - NEPAL
+  user:
+    firstname: yogen
+    lastname: pokhrel
+    username: yogen@123
+    password: YOURPASSWORD
