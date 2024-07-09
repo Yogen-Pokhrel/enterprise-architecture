@@ -38,3 +38,147 @@
 2024-07-09T16:55:17.825-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:55:17.825582
 2024-07-09T16:55:17.846-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
 2024-07-09T16:55:17.847-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:55:37.827-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:55:37.827840
+2024-07-09T16:55:37.846-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:55:37.846-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:55:57.827-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:55:57.827796
+2024-07-09T16:55:57.858-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:55:57.858-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:56:17.823-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:56:17.823615
+2024-07-09T16:56:17.846-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:56:17.847-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:56:37.824-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:56:37.824378
+2024-07-09T16:56:37.849-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:56:37.850-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:56:57.826-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:56:57.826705
+2024-07-09T16:56:57.852-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:56:57.853-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:57:17.826-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:57:17.826583
+2024-07-09T16:57:17.847-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:57:17.847-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:57:37.827-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:57:37.827064
+2024-07-09T16:57:37.852-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:57:37.852-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:57:57.826-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:57:57.826847
+2024-07-09T16:57:57.843-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:57:57.843-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:58:17.825-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:58:17.824946
+2024-07-09T16:58:17.839-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:58:17.839-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:58:27.231-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:58:27.230539
+2024-07-09T16:58:27.643-05:00  INFO 1467 --- [http-nio-8080-exec-3] bank.service.EmailService                : Account changed event received: 
+2024-07-09T16:58:27.643-05:00  INFO 1467 --- [http-nio-8080-exec-3] bank.service.EmailService                : Your account has been credited with $20000.0 from online deposit
+2024-07-09T16:58:27.643-05:00  INFO 1467 --- [http-nio-8080-exec-3] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T16:58:27.657-05:00  INFO 1467 --- [http-nio-8080-exec-4] bank.service.EmailService                : Account changed event received: 
+2024-07-09T16:58:27.657-05:00  INFO 1467 --- [http-nio-8080-exec-4] bank.service.EmailService                : Your account has been debited with $20.0 from the ATM
+2024-07-09T16:58:27.657-05:00  INFO 1467 --- [http-nio-8080-exec-4] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T16:58:27.668-05:00 ERROR 1467 --- [main] bank.Application                         : Error:Error: Insufficient funds
+2024-07-09T16:58:27.695-05:00  INFO 1467 --- [http-nio-8080-exec-8] bank.service.EmailService                : Account changed event received: 
+2024-07-09T16:58:27.695-05:00  INFO 1467 --- [http-nio-8080-exec-8] bank.service.EmailService                : Your account has been debited with $75.0
+2024-07-09T16:58:27.696-05:00  INFO 1467 --- [http-nio-8080-exec-8] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T16:58:27.696-05:00  INFO 1467 --- [http-nio-8080-exec-8] bank.service.EmailService                : Account changed event received: 
+2024-07-09T16:58:27.696-05:00  INFO 1467 --- [http-nio-8080-exec-8] bank.service.EmailService                : Your account has been credited with $75.0
+2024-07-09T16:58:27.696-05:00  INFO 1467 --- [http-nio-8080-exec-8] bank.service.EmailService                : Sending email to account holder: Yogen Pokhrel with account: 123456788
+2024-07-09T16:58:47.233-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:58:47.233680
+2024-07-09T16:58:47.274-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:58:47.275-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:59:07.227-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:59:07.227035
+2024-07-09T16:59:07.236-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:59:07.237-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:59:27.227-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:59:27.226974
+2024-07-09T16:59:27.237-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:59:27.237-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:59:47.232-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:59:47.232514
+2024-07-09T16:59:47.263-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:59:47.264-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:00:07.228-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:00:07.228809
+2024-07-09T17:00:07.259-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:00:07.259-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:00:27.232-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:00:27.232067
+2024-07-09T17:00:27.264-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:00:27.265-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:00:47.228-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:00:47.228099
+2024-07-09T17:00:47.236-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:00:47.236-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:01:07.231-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:01:07.231229
+2024-07-09T17:01:07.247-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:01:07.247-05:00  INFO 1467 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:01:14.718-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:01:14.718170
+2024-07-09T17:01:15.141-05:00  INFO 1584 --- [http-nio-8080-exec-3] bank.service.EmailService                : Account changed event received: 
+2024-07-09T17:01:15.141-05:00  INFO 1584 --- [http-nio-8080-exec-3] bank.service.EmailService                : Your account has been credited with $20000.0 from online deposit
+2024-07-09T17:01:15.141-05:00  INFO 1584 --- [http-nio-8080-exec-3] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T17:01:15.167-05:00  INFO 1584 --- [http-nio-8080-exec-4] bank.service.EmailService                : Account changed event received: 
+2024-07-09T17:01:15.167-05:00  INFO 1584 --- [http-nio-8080-exec-4] bank.service.EmailService                : Your account has been debited with $20.0 from the ATM
+2024-07-09T17:01:15.167-05:00  INFO 1584 --- [http-nio-8080-exec-4] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T17:01:15.179-05:00 ERROR 1584 --- [main] bank.Application                         : Error:Error: Insufficient funds
+2024-07-09T17:01:15.209-05:00  INFO 1584 --- [http-nio-8080-exec-8] bank.service.EmailService                : Account changed event received: 
+2024-07-09T17:01:15.209-05:00  INFO 1584 --- [http-nio-8080-exec-8] bank.service.EmailService                : Your account has been debited with $75.0
+2024-07-09T17:01:15.209-05:00  INFO 1584 --- [http-nio-8080-exec-8] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T17:01:15.210-05:00  INFO 1584 --- [http-nio-8080-exec-8] bank.service.EmailService                : Account changed event received: 
+2024-07-09T17:01:15.210-05:00  INFO 1584 --- [http-nio-8080-exec-8] bank.service.EmailService                : Your account has been credited with $75.0
+2024-07-09T17:01:15.210-05:00  INFO 1584 --- [http-nio-8080-exec-8] bank.service.EmailService                : Sending email to account holder: Yogen Pokhrel with account: 123456788
+2024-07-09T17:01:34.716-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:01:34.716030
+2024-07-09T17:01:34.750-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:01:34.750-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:01:54.719-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:01:54.718928
+2024-07-09T17:01:54.746-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:01:54.747-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:02:14.714-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:02:14.714557
+2024-07-09T17:02:14.723-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:02:14.723-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:02:34.715-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:02:34.715358
+2024-07-09T17:02:34.746-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:02:34.746-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:02:54.715-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:02:54.715199
+2024-07-09T17:02:54.739-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:02:54.740-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:03:14.714-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:03:14.714361
+2024-07-09T17:03:14.737-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:03:14.738-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:03:34.718-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:03:34.718640
+2024-07-09T17:03:34.743-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:03:34.744-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:03:54.717-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:03:54.717620
+2024-07-09T17:03:54.739-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:03:54.739-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:04:14.715-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:04:14.715331
+2024-07-09T17:04:14.741-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:04:14.742-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:04:34.719-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:04:34.719586
+2024-07-09T17:04:34.751-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:04:34.752-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:04:54.721-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:04:54.719908
+2024-07-09T17:04:54.745-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:04:54.746-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:05:14.717-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:05:14.717287
+2024-07-09T17:05:14.740-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:05:14.741-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:05:34.722-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:05:34.721897
+2024-07-09T17:05:34.743-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:05:34.744-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:05:54.719-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:05:54.718831
+2024-07-09T17:05:54.744-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:05:54.744-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:06:14.723-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:06:14.723640
+2024-07-09T17:06:14.758-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:06:14.758-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:06:34.718-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:06:34.718655
+2024-07-09T17:06:34.737-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:06:34.737-05:00  INFO 1584 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T17:06:44.108-05:00  INFO 1761 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:06:44.107368
+2024-07-09T17:06:44.534-05:00  INFO 1761 --- [http-nio-8080-exec-3] bank.service.EmailService                : Account changed event received: 
+2024-07-09T17:06:44.534-05:00  INFO 1761 --- [http-nio-8080-exec-3] bank.service.EmailService                : Your account has been credited with $20000.0 from online deposit
+2024-07-09T17:06:44.534-05:00  INFO 1761 --- [http-nio-8080-exec-3] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T17:06:44.548-05:00  INFO 1761 --- [http-nio-8080-exec-4] bank.service.EmailService                : Account changed event received: 
+2024-07-09T17:06:44.548-05:00  INFO 1761 --- [http-nio-8080-exec-4] bank.service.EmailService                : Your account has been debited with $20.0 from the ATM
+2024-07-09T17:06:44.548-05:00  INFO 1761 --- [http-nio-8080-exec-4] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T17:06:44.560-05:00 ERROR 1761 --- [main] bank.Application                         : Error:Error: Insufficient funds
+2024-07-09T17:06:44.587-05:00  INFO 1761 --- [http-nio-8080-exec-8] bank.service.EmailService                : Account changed event received: 
+2024-07-09T17:06:44.587-05:00  INFO 1761 --- [http-nio-8080-exec-8] bank.service.EmailService                : Your account has been debited with $75.0
+2024-07-09T17:06:44.587-05:00  INFO 1761 --- [http-nio-8080-exec-8] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T17:06:44.587-05:00  INFO 1761 --- [http-nio-8080-exec-8] bank.service.EmailService                : Account changed event received: 
+2024-07-09T17:06:44.587-05:00  INFO 1761 --- [http-nio-8080-exec-8] bank.service.EmailService                : Your account has been credited with $75.0
+2024-07-09T17:06:44.587-05:00  INFO 1761 --- [http-nio-8080-exec-8] bank.service.EmailService                : Sending email to account holder: Yogen Pokhrel with account: 123456788
+2024-07-09T17:07:04.108-05:00  INFO 1761 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T17:07:04.108391
+2024-07-09T17:07:04.143-05:00  INFO 1761 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T17:07:04.148-05:00  INFO 1761 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
