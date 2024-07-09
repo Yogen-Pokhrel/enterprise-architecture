@@ -55,7 +55,7 @@ public class Application implements CommandLineRunner {
 			TransactionDto transactionDto = new TransactionDto();
 			transactionDto.setAction("DEPOSIT");
 			transactionDto.setCurrency("USD");
-			transactionDto.setAmount(200.0);
+			transactionDto.setAmount(20000.0);
 			client.transaction(123456789L, transactionDto);
 			System.out.println("Transaction completed successfully");
 

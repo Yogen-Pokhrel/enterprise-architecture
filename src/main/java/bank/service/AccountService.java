@@ -11,6 +11,7 @@ import bank.domain.Customer;
 import bank.dto.response.AccountDto;
 import bank.dto.response.AccountListDto;
 import bank.jms.IJMSSender;
+import bank.jms.Transaction;
 import bank.logging.ILogger;
 import bank.repository.AccountRepository;
 import jakarta.transaction.Transactional;
@@ -60,8 +61,10 @@ public class AccountService implements IAccountService {
 		account.deposit(amount);
 		accountRepository.save(account);
 		logger.log("deposit with parameters accountNumber= "+accountNumber+" , amount= "+amount);
-		if (amount > 10000){
-			jmsSender.sendJMSMessage("Deposit of $ "+amount+" to account with accountNumber= "+accountNumber);
+		double amount_euro = currencyConverter.dollarsToEuros(amount);
+		if (amount_euro >= 10000){
+			Transaction transaction = new Transaction(amount_euro, account.getAccountNumber(), account.getCustomer().getName(), "Deposit of $ "+amount+" to account with accountNumber= "+accountNumber);
+			jmsSender.sendJMSMessage(transaction);
 		}
 	}
 
