@@ -18,4 +18,6 @@ public class TransactionDto {
     @ValidEnum(enumClass = TransactionAction.class, message = "Please provide a valid action type")
     private String action;
 
+    private long accountNumber;
+
 }
