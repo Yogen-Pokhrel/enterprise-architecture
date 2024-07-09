@@ -1,0 +1,40 @@
+2024-07-09T16:53:40.726-05:00  INFO 1203 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:53:40.725848
+2024-07-09T16:53:41.129-05:00  INFO 1203 --- [http-nio-8080-exec-2] bank.service.EmailService                : Account changed event received: 
+2024-07-09T16:53:41.129-05:00  INFO 1203 --- [http-nio-8080-exec-2] bank.service.EmailService                : Your account has been credited with $20000.0 from online deposit
+2024-07-09T16:53:41.129-05:00  INFO 1203 --- [http-nio-8080-exec-2] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T16:53:41.144-05:00  INFO 1203 --- [http-nio-8080-exec-4] bank.service.EmailService                : Account changed event received: 
+2024-07-09T16:53:41.144-05:00  INFO 1203 --- [http-nio-8080-exec-4] bank.service.EmailService                : Your account has been debited with $20.0 from the ATM
+2024-07-09T16:53:41.144-05:00  INFO 1203 --- [http-nio-8080-exec-4] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T16:53:41.154-05:00 ERROR 1203 --- [main] bank.Application                         : Error:Error: Insufficient funds
+2024-07-09T16:53:41.184-05:00  INFO 1203 --- [http-nio-8080-exec-8] bank.service.EmailService                : Account changed event received: 
+2024-07-09T16:53:41.184-05:00  INFO 1203 --- [http-nio-8080-exec-8] bank.service.EmailService                : Your account has been debited with $75.0
+2024-07-09T16:53:41.184-05:00  INFO 1203 --- [http-nio-8080-exec-8] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T16:53:41.185-05:00  INFO 1203 --- [http-nio-8080-exec-8] bank.service.EmailService                : Account changed event received: 
+2024-07-09T16:53:41.185-05:00  INFO 1203 --- [http-nio-8080-exec-8] bank.service.EmailService                : Your account has been credited with $75.0
+2024-07-09T16:53:41.185-05:00  INFO 1203 --- [http-nio-8080-exec-8] bank.service.EmailService                : Sending email to account holder: Yogen Pokhrel with account: 123456788
+2024-07-09T16:54:00.734-05:00  INFO 1203 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:54:00.733960
+2024-07-09T16:54:00.748-05:00  INFO 1203 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:54:00.748-05:00  INFO 1203 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:54:20.728-05:00  INFO 1203 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:54:20.728896
+2024-07-09T16:54:20.793-05:00  INFO 1203 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:54:20.793-05:00  INFO 1203 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:54:40.726-05:00  INFO 1203 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:54:40.726176
+2024-07-09T16:54:40.738-05:00  INFO 1203 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:54:40.738-05:00  INFO 1203 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
+2024-07-09T16:54:57.825-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:54:57.824666
+2024-07-09T16:54:58.219-05:00  INFO 1276 --- [http-nio-8080-exec-2] bank.service.EmailService                : Account changed event received: 
+2024-07-09T16:54:58.220-05:00  INFO 1276 --- [http-nio-8080-exec-2] bank.service.EmailService                : Your account has been credited with $20000.0 from online deposit
+2024-07-09T16:54:58.220-05:00  INFO 1276 --- [http-nio-8080-exec-2] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T16:54:58.233-05:00  INFO 1276 --- [http-nio-8080-exec-3] bank.service.EmailService                : Account changed event received: 
+2024-07-09T16:54:58.234-05:00  INFO 1276 --- [http-nio-8080-exec-3] bank.service.EmailService                : Your account has been debited with $20.0 from the ATM
+2024-07-09T16:54:58.234-05:00  INFO 1276 --- [http-nio-8080-exec-3] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T16:54:58.246-05:00 ERROR 1276 --- [main] bank.Application                         : Error:Error: Insufficient funds
+2024-07-09T16:54:58.271-05:00  INFO 1276 --- [http-nio-8080-exec-8] bank.service.EmailService                : Account changed event received: 
+2024-07-09T16:54:58.271-05:00  INFO 1276 --- [http-nio-8080-exec-8] bank.service.EmailService                : Your account has been debited with $75.0
+2024-07-09T16:54:58.271-05:00  INFO 1276 --- [http-nio-8080-exec-8] bank.service.EmailService                : Sending email to account holder: John Doe with account: 123456789
+2024-07-09T16:54:58.272-05:00  INFO 1276 --- [http-nio-8080-exec-8] bank.service.EmailService                : Account changed event received: 
+2024-07-09T16:54:58.272-05:00  INFO 1276 --- [http-nio-8080-exec-8] bank.service.EmailService                : Your account has been credited with $75.0
+2024-07-09T16:54:58.272-05:00  INFO 1276 --- [http-nio-8080-exec-8] bank.service.EmailService                : Sending email to account holder: Yogen Pokhrel with account: 123456788
+2024-07-09T16:55:17.825-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Bank Statement Printer: 2024-07-09T16:55:17.825582
+2024-07-09T16:55:17.846-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456789 Balance: 19905.0
+2024-07-09T16:55:17.847-05:00  INFO 1276 --- [scheduling-1] bank.schedule.BankStatementPrinter       : Account: 123456788 Balance: 75.0
