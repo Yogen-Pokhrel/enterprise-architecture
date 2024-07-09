@@ -9,6 +9,7 @@ import bank.configuration.Currency;
 import bank.domain.Account;
 import bank.domain.Customer;
 import bank.dto.response.AccountDto;
+import bank.dto.response.AccountEventDto;
 import bank.dto.response.AccountListDto;
 import bank.jms.IJMSSender;
 import bank.jms.Transaction;
@@ -18,6 +19,7 @@ import jakarta.transaction.Transactional;
 import org.apache.coyote.BadRequestException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 
@@ -37,6 +39,9 @@ public class AccountService implements IAccountService {
 
 	@Autowired
 	ModelMapper modelMapper;
+
+	@Autowired
+	private ApplicationEventPublisher publisher;
 
 	@Transactional
 	public AccountDto createAccount(long accountNumber, String customerName) throws Exception{
@@ -66,6 +71,9 @@ public class AccountService implements IAccountService {
 			Transaction transaction = new Transaction(amount_euro, account.getAccountNumber(), account.getCustomer().getName(), "Deposit of $ "+amount+" to account with accountNumber= "+accountNumber);
 			jmsSender.sendJMSMessage(transaction);
 		}
+		AccountDto accountDto = modelMapper.map(account, AccountDto.class);
+		publisher.publishEvent(new AccountEventDto("Your account has been credited with $" + amount + " from online deposit", accountDto));
+
 	}
 
 	@Transactional
@@ -101,6 +109,8 @@ public class AccountService implements IAccountService {
 		account.withdraw(amount);
 		accountRepository.save(account);
 		logger.log("withdraw with parameters accountNumber= "+accountNumber+" , amount= USD"+amount);
+		AccountDto accountDto = modelMapper.map(account, AccountDto.class);
+		publisher.publishEvent(new AccountEventDto("Your account has been debited with $" + amount + " from the ATM", accountDto));
 	}
 
 	@Transactional
@@ -118,5 +128,10 @@ public class AccountService implements IAccountService {
 		if (amount > 10000){
 			jmsSender.sendJMSMessage("TransferFunds of $ "+amount+" from account with accountNumber= "+fromAccount+" to account with accountNumber= "+toAccount);
 		}
+		AccountDto accountDto = modelMapper.map(fromAccount, AccountDto.class);
+		publisher.publishEvent(new AccountEventDto("Your account has been debited with $" + amount, accountDto));
+
+		accountDto = modelMapper.map(toAccount, AccountDto.class);
+		publisher.publishEvent(new AccountEventDto("Your account has been credited with $" + amount, accountDto));
 	}
 }

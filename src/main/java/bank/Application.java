@@ -11,11 +11,13 @@ import bank.dto.response.AccountDto;
 import bank.dto.response.AccountEntryDto;
 import bank.dto.response.CustomerDto;
 import bank.service.IAccountService;
+import bank.service.MailProperties;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -23,6 +25,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
+@EnableConfigurationProperties(MailProperties.class)
 public class Application implements CommandLineRunner {
 
 	@Autowired
