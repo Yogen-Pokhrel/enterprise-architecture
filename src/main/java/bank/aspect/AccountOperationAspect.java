@@ -7,6 +7,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -18,8 +19,9 @@ public class AccountOperationAspect {
     @Autowired
     private AccountTraceRepository accountTraceRepository;
 
+    @Async
     @AfterReturning(pointcut = "execution(* bank.service.AccountService.deposit(..))")
-    @Transactional
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public void logDeposit(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
         long accountNumber = (long) args[0];
@@ -27,10 +29,12 @@ public class AccountOperationAspect {
 
         AccountTrace trace = new AccountTrace(LocalDateTime.now(), accountNumber, "Deposit", amount);
         accountTraceRepository.save(trace);
+        System.out.println("deposit AOP");
     }
 
+    @Async
     @AfterReturning(pointcut = "execution(* bank.service.AccountService.withdraw(..))")
-    @Transactional
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public void logWithdraw(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
         long accountNumber = (long) args[0];
@@ -38,10 +42,12 @@ public class AccountOperationAspect {
 
         AccountTrace trace = new AccountTrace(LocalDateTime.now(), accountNumber, "Withdraw", amount);
         accountTraceRepository.save(trace);
+        System.out.println("withdraw AOP");
     }
 
+    @Async
     @AfterReturning(pointcut = "execution(* bank.service.AccountService.transferFunds(..))")
-    @Transactional
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public void logTransferFunds(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
         long fromAccountNumber = (long) args[0];
@@ -53,5 +59,6 @@ public class AccountOperationAspect {
 
         AccountTrace traceTo = new AccountTrace(LocalDateTime.now(), toAccountNumber, "Transfer In", amount);
         accountTraceRepository.save(traceTo);
+        System.out.println("transfer Funds AOP");
     }
 }
