@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: ea-demo-project
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ea-demo-project
+  template:
+    metadata:
+      labels:
+        app: ea-demo-project
+    spec:
+      containers:
+        - name: ea-demo-project
+          image: yogenpokhrel/ea-demo-project:v1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
