@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
     name: ea-demo-project
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: ea-demo-project
@@ -14,7 +14,11 @@ spec:
     spec:
       containers:
         - name: ea-demo-project
-          image: yogenpokhrel/ea-demo-project:v1.0
+          image: yogenpokhrel/ea-demo-project:v1.4
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+          resources:
+            limits:
+              cpu: "2"
+              memory: "2Gi"
