@@ -12,7 +12,7 @@ public class DemoSchedule {
 
     Logger logger = LoggerFactory.getLogger(DemoSchedule.class);
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 30000)
     public void demoSchedule() {
         logger.info("I have been scheduled guys but I am a info");
         logger.trace("I have been scheduled guys but I am a trace");
