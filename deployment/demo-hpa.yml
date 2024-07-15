@@ -1,12 +1,31 @@
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: ea-demo-project-hpa
+  name: example-demo-project-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: ea-demo-project
   minReplicas: 1
-  maxReplicas: 4
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 10
+      policies:
+      - type: Pods
+        value: 2
+        periodSeconds: 5
+    scaleUp:
+      stabilizationWindowSeconds: 0 
+      policies:
+      - type: Pods
+        value: 1
+        periodSeconds: 15 
