@@ -8,7 +8,7 @@ spec:
     kind: Deployment
     name: ea-demo-project
   minReplicas: 1
-  maxReplicas: 6
+  maxReplicas: 5
   metrics:
   - type: Resource
     resource:
@@ -24,8 +24,8 @@ spec:
         value: 2
         periodSeconds: 15
     scaleUp:
-      stabilizationWindowSeconds: 30
+      stabilizationWindowSeconds: 15
       policies:
       - type: Pods
-        value: 2
-        periodSeconds: 15 
+        value: 1
+        periodSeconds: 5
