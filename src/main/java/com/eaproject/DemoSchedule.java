@@ -12,12 +12,20 @@ public class DemoSchedule {
 
     Logger logger = LoggerFactory.getLogger(DemoSchedule.class);
 
-    @Scheduled(fixedRate = 30000)
-    public void demoSchedule() {
+    @Scheduled(fixedRate = 120000)
+    public void demoScheduleWarn() {
+        logger.warn("I have been scheduled guys but I am a warn");
+    }
+
+    @Scheduled(fixedRate = 45000)
+    public void demoScheduleError() {
+        logger.error("I have been scheduled guys but I am a error");
+    }
+
+    @Scheduled(fixedRate = 70000)
+    public void demoScheduleOther() {
         logger.info("I have been scheduled guys but I am a info");
         logger.trace("I have been scheduled guys but I am a trace");
         logger.debug("I have been scheduled guys but I am a debug");
-        logger.error("I have been scheduled guys but I am a error");
-        logger.warn("I have been scheduled guys but I am a warn \n\n");
     }
 }
