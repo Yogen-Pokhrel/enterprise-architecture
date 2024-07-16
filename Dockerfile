@@ -2,7 +2,7 @@
 FROM openjdk:21-jdk-slim as build
 
 # Add Maintainer Info
-LABEL maintainer="yogendrapokhrel777@gmail.com"
+LABEL maintainer="ngaurav456@gmail.com"
 
 # Add a volume pointing to /tmp
 VOLUME /tmp
@@ -18,3 +18,4 @@ ADD ${JAR_FILE} ea-project-demo.jar
 
 # Run the jar file
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/ea-project-demo.jar"]
+
