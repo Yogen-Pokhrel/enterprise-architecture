@@ -14,11 +14,23 @@ spec:
     spec:
       containers:
         - name: ea-demo-project
-          image: yogenpokhrel/ea-demo-project:v1.4
+          image: ngaurav07/k8s-spring-demo:v1.1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           resources:
             limits:
               cpu: "0.5"
-              memory: "200Mi"
+              memory: "300Mi"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          readinessProbe:
+              httpGet:
+                path: /actuator/health
+                port: 8080
+              initialDelaySeconds: 60
+              periodSeconds: 10
