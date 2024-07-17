@@ -1,9 +1,13 @@
-package com.eaproject;
+package com.eaproject.controller;
 
+import com.eaproject.configuration.CustomException;
+import com.eaproject.dto.SampleDto;
+import com.eaproject.service.DemoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("/api")
@@ -11,6 +15,8 @@ public class DemoController {
 
     @Autowired
     DemoService demoService;
+
+    private static final Logger logger = LoggerFactory.getLogger(DemoController.class);
 
     @GetMapping
     public String getMessage() throws Exception {
@@ -33,8 +39,27 @@ public class DemoController {
 
         password = "sdfsfsdf sdfsdfsfs dfs ffo46457567jdffdglfdgdfg dfg dfg dg dfg dgdf dfg df gfdg fdfgfdg\n";
         String hashed = demoService.hashPassword(password).get();
-        System.out.println("Hashed password: " + hashed);
 
-        return "You are in right path " + hashed;
+        return "You are in right path";
+    }
+
+    @PostMapping("/generateError")
+    public String generateError(@RequestBody SampleDto sampleDto) throws Exception {
+        if(sampleDto.getQuantity() < 1){
+            throw new CustomException("Quantity must be at least 1", sampleDto.toString());
+        }
+        return "No error occurred";
+    }
+
+    @PostMapping("/generateWarn")
+    public String generateWarning() {
+        logger.warn("Warning logged");
+        return "Warning logged";
+    }
+
+    @PostMapping("/generateInfo")
+    public String generateInfo() {
+        logger.info("Info logged");
+        return "Info logged";
     }
 }
