@@ -5,9 +5,9 @@ Using Spring boot application inside the docker container orchestrated by the ku
 
 ## Installation
 1. Install the applications
-[Docker](https://docs.docker.com/engine/install/)
-[Kubernetes](https://kubernetes.io/docs/tasks/tools/)
-[Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
+    * [Docker](https://docs.docker.com/engine/install/)
+    * [Kubernetes](https://kubernetes.io/docs/tasks/tools/)
+    * [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
  2. Start _Docker_
 3. Then run the *install.sh* file.
 	```bash
@@ -18,8 +18,7 @@ Using Spring boot application inside the docker container orchestrated by the ku
 	kubectl  -n  kubernetes-dashboard  port-forward  svc/kubernetes-dashboard-kong-proxy  8443:443
     ```
 5. Start the _Dashboard_
-    > [!NOTE]
-    > # Run only after the pods are ready.
+    > **_NOTE:_** Run only after the above code runs.
     ```bash
 	kubectl  -n  kubernetes-dashboard  create  token  kubernetes-dashboard-web
 	```
